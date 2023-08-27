@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant User as User
+    participant Main as Main
+    participant Scheduler as Scheduler
+    participant Diary as Diary
+    participant Database as Database
+    participant SMS as SMS
+
+    User->>Main: Run the CLI chatbot
+    Main->>Scheduler: Schedule an appointment
+    Scheduler->>Database: Create the appointment
+    Database->>Scheduler: Return the created appointment
+    Scheduler->>SMS: Send confirmation message
+    Main->>User: Display confirmation message
+    Main->>Scheduler: Reschedule an appointment
+    Scheduler->>Database: Update the appointment
+    Database->>Scheduler: Return the updated appointment
+    Main->>User: Display updated appointment details
+    Main->>Scheduler: Cancel an appointment
+    Scheduler->>Database: Delete the appointment
+    Main->>User: Display cancellation confirmation
+    Main->>Diary: View appointments
+    Diary->>Database: Get the appointments
+    Database->>Diary: Return the appointments
+    Main->>User: Display appointments
+    Scheduler->>SMS: Send reminder message
